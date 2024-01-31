@@ -12,7 +12,16 @@ As it currently stands the `DELETE` end-point removes the task from the database
 
 ### Owner entity
 
-We want to introduce a new entity to the system, the `Owner` of the task. An owner must be created before tasks can be associated with them. Tasks may or may not have an owner. It must be possible to create and delete an owner, if an owner is deleted, all of the tasks associated with them should also be deleted. It must be possible to change the owner of a task, as well as the information about the owner. The `Owner` schema should be as follows:
+We want to introduce a new entity to the system, the `Owner` of the task. These are the requirements for this feature:
+
+-   An owner must be created before tasks can be associated with them.
+-   Tasks may or may not have an owner.
+-   It must be possible to create and delete an owner, if an owner is deleted, all of the tasks associated with them should also be deleted.
+-   The deletion of the owner is also a soft delete, just like the tasks.
+-   It must be possible to change the owner of a task, as well as the information about the owner.
+-   It must be possible to retrieve all the tasks of a specific owner.
+
+The `Owner` schema should be as follows:
 
 ```ts
 {
