@@ -1,10 +1,9 @@
 import { BodyParam, Delete, Get, PathParam, Post, Put, Router } from '@ubio/framework';
 import { dep } from 'mesh-ioc';
 
-import { TaskService } from '../services/task.js';
+import { TaskService } from '../services/TaskService.js';
 
 export class TaskRouter extends Router {
-
     @dep() private taskService!: TaskService;
 
     @Get({ path: '/tasks/{taskId}' })

@@ -2,8 +2,8 @@ import { ClientError } from '@ubio/framework';
 import { dep } from 'mesh-ioc';
 
 import { MongoDb } from '../mongodb.js';
-import { Task, TaskSchema } from '../schema/task.js';
-import { TaskRepository, TaskUpdateSpec } from './task.js';
+import { Task, TaskSchema } from '../schema/TaskSchema.js';
+import { TaskRepository, TaskUpdateSpec } from './TaskRepository.js';
 
 interface MongoTask {
     _id: string;
@@ -13,7 +13,6 @@ interface MongoTask {
 }
 
 export class MongoTaskRepository extends TaskRepository {
-
     @dep() private mongodb!: MongoDb;
 
     async setup() {
@@ -52,13 +51,16 @@ export class MongoTaskRepository extends TaskRepository {
     }
 
     async updateTask(id: string, spec: TaskUpdateSpec) {
-        const res = await this.collection.updateOne({
-            _id: id
-        }, {
-            $set: {
-                ...spec
+        const res = await this.collection.updateOne(
+            {
+                _id: id,
             },
-        });
+            {
+                $set: {
+                    ...spec,
+                },
+            }
+        );
         return res.matchedCount > 0;
     }
 
@@ -73,5 +75,4 @@ export class MongoTaskRepository extends TaskRepository {
             id: doc._id,
         });
     }
-
 }

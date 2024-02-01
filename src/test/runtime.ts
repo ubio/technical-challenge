@@ -3,13 +3,12 @@ import { dep } from 'mesh-ioc';
 
 import { App } from '../main/app.js';
 import { MongoDb } from '../main/mongodb.js';
-import { TaskRepository } from '../main/repositories/task.js';
+import { TaskRepository } from '../main/repositories/TaskRepository.js';
 
 config({ path: '.env' });
 config({ path: '.env.test' });
 
 export class TestRuntime {
-
     @dep({ cache: false }) mongodb!: MongoDb;
     @dep({ cache: false }) taskRepository!: TaskRepository;
 
@@ -38,7 +37,6 @@ export class TestRuntime {
     async fetch(path: string, init?: RequestInit) {
         return fetch(`${this.baseUrl}${path}`, init);
     }
-
 }
 
 export const runtime = new TestRuntime();

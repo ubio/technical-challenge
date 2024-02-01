@@ -8,7 +8,7 @@ The remaining of README describes the service itself. Please proceed to [Challen
 
 # Task Service
 
-This application is a simple task manager. It allows clients to create, find, list, complete and delete the tasks. It is developed using our default code structure and design practices.
+This application is a simple task manager. It allows clients to create, find, list, complete and delete tasks. It is developed using our default code structure and design practices.
 
 ## Endpoints
 
@@ -54,7 +54,7 @@ POST /tasks { "title": "Write some code", "isCompleted": false }
 
 ### PUT /tasks/{taskId}/complete
 
-Marks the task with specified `taskId` as completed.
+Marks the task with the specified `taskId` as completed.
 Returns no content if successful.
 If the task is not found, returns a 404 error.
 

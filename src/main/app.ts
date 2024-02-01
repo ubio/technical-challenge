@@ -2,11 +2,11 @@ import { Application } from '@ubio/framework';
 import { MongoDb } from '@ubio/framework/modules/mongodb';
 import { dep } from 'mesh-ioc';
 
-import { TaskRepository } from './repositories/task.js';
-import { MongoTaskRepository } from './repositories/task.mongo.js';
-import { StatusRouter } from './routes/status.js';
-import { TaskRouter } from './routes/tasks.js';
-import { TaskService } from './services/task.js';
+import { TaskRepository } from './repositories/TaskRepository.js';
+import { MongoTaskRepository } from './repositories/TaskRepository.mongo.js';
+import { StatusRouter } from './routes/StatusRouter.js';
+import { TaskRouter } from './routes/TaskRouter.js';
+import { TaskService } from './services/TaskService.js';
 
 export class App extends Application {
     @dep() private mongodb!: MongoDb;

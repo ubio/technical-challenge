@@ -1,4 +1,4 @@
-import { Task } from '../schema/task.js';
+import { Task } from '../schema/TaskSchema.js';
 
 export type TaskUpdateSpec = Partial<Omit<Task, 'id'>>;
 

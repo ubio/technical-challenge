@@ -3,7 +3,7 @@ import { randomUUID } from 'crypto';
 import { dep } from 'mesh-ioc';
 
 import { NotFoundError } from '../errors.js';
-import { TaskRepository } from '../repositories/task.js';
+import { TaskRepository } from '../repositories/TaskRepository.js';
 
 export class TaskService {
 
