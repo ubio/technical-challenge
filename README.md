@@ -1,5 +1,7 @@
 Hi there! 👋
 
+We are excited about you considering to join our small team of dedicated engineers.
+
 This repo contains a small HTTP-based microservice built using [Node Framework](https://github.com/ubio/node-framework) (our framework for building back-end applications). We at [Ubio](https://ub.io) use this repo as a basis for technical challenges for software engineering positions.
 
 The remaining of README describes the service itself. Please proceed to [Challenges](CHALLENGES.md) for the assignments and our expectations.
