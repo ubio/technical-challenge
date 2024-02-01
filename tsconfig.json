@@ -12,7 +12,7 @@
         "sourceMap": true,
         "noImplicitOverride": true,
         "esModuleInterop": true,
-        // "allowSyntheticDefaultImports": true,
+        "forceConsistentCasingInFileNames": true,
         "skipLibCheck": true,
         "outDir": "./out",
         "rootDir": "./src"

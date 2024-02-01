@@ -1,17 +1,18 @@
 import { BodyParam, Delete, Get, PathParam, Post, Put, Router } from '@ubio/framework';
 import { dep } from 'mesh-ioc';
 
-import { TasksService } from '../services/tasks.js';
+import { TaskService } from '../services/task.js';
 
-export class TasksRouter extends Router {
-    @dep() private taskService!: TasksService;
+export class TaskRouter extends Router {
 
-    @Get({ path: '/task/{taskId}' })
+    @dep() private taskService!: TaskService;
+
+    @Get({ path: '/tasks/{taskId}' })
     async getTask(
         @PathParam('taskId', { schema: { type: 'string' }, required: true })
         taskId: string
     ) {
-        return await this.taskService.get(taskId);
+        return await this.taskService.getById(taskId);
     }
 
     @Get({ path: '/tasks' })
@@ -19,7 +20,7 @@ export class TasksRouter extends Router {
         return await this.taskService.getAll();
     }
 
-    @Post({ path: '/task' })
+    @Post({ path: '/tasks' })
     async createTask(
         @BodyParam('title', { schema: { type: 'string' }, required: true })
         title: string,
@@ -27,18 +28,16 @@ export class TasksRouter extends Router {
         description?: string
     ) {
         const taskId = await this.taskService.create(title, description);
-
         this.ctx.status = 201;
         return taskId;
     }
 
-    @Put({ path: '/task/{taskId}/complete' })
+    @Put({ path: '/tasks/{taskId}/complete' })
     async completeTask(
         @PathParam('taskId', { schema: { type: 'string' }, required: true })
         taskId: string
     ) {
-        const task = await this.taskService.complete(taskId);
-        return task;
+        await this.taskService.markComplete(taskId);
     }
 
     @Delete({ path: '/tasks/{taskId}' })
@@ -46,7 +45,6 @@ export class TasksRouter extends Router {
         @PathParam('taskId', { schema: { type: 'string' }, required: true })
         taskId: string
     ) {
-        const task = await this.taskService.delete(taskId);
-        return task;
+        await this.taskService.delete(taskId);
     }
 }
